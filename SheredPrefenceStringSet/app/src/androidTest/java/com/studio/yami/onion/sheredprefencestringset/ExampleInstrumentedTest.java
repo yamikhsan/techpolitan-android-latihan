@@ -1,4 +1,4 @@
-package com.studio.yami.onion.todolistapp;
+package com.studio.yami.onion.sheredprefencestringset;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.studio.yami.onion.todolistapp", appContext.getPackageName());
+        assertEquals("com.studio.yami.onion.sheredprefencestringset", appContext.getPackageName());
     }
 }

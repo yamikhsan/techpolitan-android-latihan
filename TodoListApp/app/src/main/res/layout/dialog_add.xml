@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/merriweather_bold"
+        android:text="@string/what_is_your"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        tools:targetApi="jelly_bean" />
+    
+    <EditText
+        android:id="@+id/input_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:lines="1"
+        android:inputType="text"
+        tools:ignore="Autofill,LabelFor" />
+
+</LinearLayout>

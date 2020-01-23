@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TodoListApp</string>
+    <string name="app_name">Todo List</string>
+    <string name="what_is_your">What is your main focus for today?</string>
+    <string name="todo">ToDo</string>
 </resources>
