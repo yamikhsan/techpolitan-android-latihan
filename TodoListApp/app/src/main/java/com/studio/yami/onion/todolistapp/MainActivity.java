@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         listItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String value=adapter.getItem(i);
-                deleteDialog(value);
+                String value = adapter.getItem(i);
+                optionDialog(value);
             }
         });
     }
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("InflateParams")
         final View view = this.getLayoutInflater().inflate(R.layout.dialog_add, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Create item");
         builder.setView(view);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -114,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     private void deleteDialog(final String s){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to delete this item?");
+        builder.setMessage(Html.fromHtml("Do you want to remove \"<i><b>" + s + "<i></b>\""));
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -131,6 +133,64 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    // AlertDialog Update
+    private void updateDialog(final String s){
+
+        @SuppressLint("InflateParams")
+        final View view = this.getLayoutInflater().inflate(R.layout.dialog_add, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update item");
+        builder.setView(view);
+        final EditText text = view.findViewById(R.id.input_list);
+        text.setText(s);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String getText = text.getText().toString();
+                if(getText.equals("")){
+                    text.setError("Required");
+                } else {
+                    listText.remove(s);
+                    listText.add(getText);
+                    adapter.notifyDataSetChanged();
+                    savePreference();
+                }
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    // AlertDialog Option
+    private void optionDialog(final String s){
+
+        String[] opt = {"Update", "Delete"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setItems(opt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                switch (i){
+                    case 0:
+                        updateDialog(s);
+                        break;
+                    case 1:
+                        deleteDialog(s);
+                        break;
+                }
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
 

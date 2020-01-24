@@ -5,16 +5,6 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/merriweather_bold"
-        android:text="@string/what_is_your"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"
-        tools:targetApi="jelly_bean" />
     
     <EditText
         android:id="@+id/input_list"
