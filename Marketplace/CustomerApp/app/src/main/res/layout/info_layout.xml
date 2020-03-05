@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TableRow
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:text="@string/price"
+            style="@style/TvDetail.Title" />
+
+        <TextView
+            android:id="@+id/tv_detail_price"
+            tools:text="Rp 16.000"
+            style="@style/TvDetail.Content"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:text="@string/qty"
+            style="@style/TvDetail.Title" />
+
+        <TextView
+            android:id="@+id/tv_detail_qty"
+            tools:text="18"
+            style="@style/TvDetail.Content"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:text="@string/category"
+            style="@style/TvDetail.Title" />
+
+        <TextView
+            android:id="@+id/tv_detail_category"
+            tools:text="Laptop"
+            style="@style/TvDetail.Content"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/merchant"
+            style="@style/TvDetail.Title" />
+
+        <TextView
+            android:id="@+id/tv_detail_merchant"
+            tools:text="Electronic Shop"
+            style="@style/TvDetail.Content"/>
+
+    </TableRow>
+
+</TableLayout>

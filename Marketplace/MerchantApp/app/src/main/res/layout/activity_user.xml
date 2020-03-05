@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Name"
+        android:fontFamily="@font/merriweather_regular"
+        android:textSize="14sp"
+        android:textColor="@color/colorDark"/>
+
+    <TextView
+        android:id="@+id/tv_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Email"
+        android:fontFamily="@font/merriweather_regular"
+        android:textSize="14sp"
+        android:textColor="@color/colorDark"/>
+
+    <TextView
+        android:id="@+id/tv_user_merchant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Merchant"
+        android:fontFamily="@font/merriweather_regular"
+        android:textSize="14sp"
+        android:textColor="@color/colorDark"/>
+
+</LinearLayout>

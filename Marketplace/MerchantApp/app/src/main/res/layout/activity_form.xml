@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLight">
+
+    <TextView
+        android:id="@+id/tv_title_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/merriweather_bold"
+        android:gravity="center_horizontal"
+        tools:text="Create Product"
+        android:textColor="@color/colorDark"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/holo_red_light"
+        android:fontFamily="@font/merriweather_bold"
+        android:onClick="handleClick"
+        tools:text="Create Product"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textAllCaps="false"
+        android:textColor="@color/colorLight"
+        android:textSize="16sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@+id/tv_title_form"
+        android:layout_above="@+id/btn_form"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scroll_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/input_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:hint="@string/name"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:imeOptions="actionNext"
+                        tools:ignore="Autofill,TextFields" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/input_item_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:hint="@string/price"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill,TextFields" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/input_item_qty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:hint="@string/qty"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill,TextFields" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="150">
+
+                    <EditText
+                        android:id="@+id/input_item_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:hint="@string/description"
+                        android:maxLength="150"
+                        android:maxLines="10"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill,TextFields" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/merriweather_regular"
+                    android:text="@string/category" />
+
+                <Spinner
+                    android:id="@+id/category_dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/colorBlue"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:onClick="chooseImage"
+                    android:text="@string/upload_image"
+                    android:textAllCaps="false" />
+
+                <ImageView
+                    android:id="@+id/image_form_file"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_line"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
