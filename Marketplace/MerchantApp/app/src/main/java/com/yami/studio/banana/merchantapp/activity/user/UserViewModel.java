@@ -29,6 +29,6 @@ public class UserViewModel extends AndroidViewModel {
 
     LiveData<NetworkStatus> get(String token){
         header.put("Authorization", token);
-        return client.call(Request.Method.GET, url, null, header, null);
+        return client.jsonRequest(Request.Method.GET, url, null, header);
     }
 }

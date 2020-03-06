@@ -29,6 +29,6 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     LiveData<NetworkStatus> getProductData(){
-        return client.call(Request.Method.GET, url, null, header, null);
+        return client.jsonRequest(Request.Method.GET, url, null, header);
     }
 }

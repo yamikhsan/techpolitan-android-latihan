@@ -19,23 +19,23 @@ public class Error{
     }
 
     public String getFirst_name() {
-        return first_name.get(0);
+        return first_name != null ? first_name.get(0) : "";
     }
 
     public String getLast_name() {
-        return last_name.get(0);
+        return last_name != null ? last_name.get(0) : "";
     }
 
     public String getEmail() {
-        return email.get(0);
+        return email != null ? email.get(0) : "";
     }
 
     public String getPassword() {
-        return password.get(0);
+        return password != null ? password.get(0) : "";
     }
 
     public String getConfirm_password() {
-        return confirm_password.get(0);
+        return confirm_password != null ? confirm_password.get(0) : "";
     }
 }
 

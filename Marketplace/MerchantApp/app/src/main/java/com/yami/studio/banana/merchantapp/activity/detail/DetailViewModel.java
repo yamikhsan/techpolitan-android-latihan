@@ -29,12 +29,12 @@ public class DetailViewModel extends AndroidViewModel {
 
     LiveData<NetworkStatus> getProduct(long id){
         String url = baseUrl + BuildConfig.ID + id;
-        return client.call(Request.Method.GET, url, null, header, null);
+        return client.jsonRequest(Request.Method.GET, url, null, header);
     }
 
     LiveData<NetworkStatus> delete(long id){
         String url = baseUrl + BuildConfig.PRODUCT + id + BuildConfig.DELETE;
-        return client.call(Request.Method.DELETE, url, null, header, null);
+        return client.jsonRequest(Request.Method.DELETE, url, null, header);
     }
 
 }

@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.yami.studio.banana.merchantapp.activity.disconnect.DisconnectHandle;
 import com.yami.studio.banana.merchantapp.activity.login.LoginActivity;
+import com.yami.studio.banana.merchantapp.activity.user.UserActivity;
 import com.yami.studio.banana.merchantapp.databinding.ActivityRegisterBinding;
 import com.yami.studio.banana.merchantapp.entity.Token;
 import com.yami.studio.banana.merchantapp.entity.error.Error;
@@ -46,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         preferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
     }
 
-    private void getForm(){
+    private void getForm() {
         String isMerchant = "1";
         String merchantName = bind.inputMerchantName.getText().toString();
         String firstName = bind.inputFirstName.getText().toString();
@@ -57,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         merchantName = merchantName.isEmpty() ? "Sayur Shop" : merchantName;
 
+
         params.put("first_name", firstName);
         params.put("last_name", lastName);
         params.put("email", email);
@@ -66,25 +68,30 @@ public class RegisterActivity extends AppCompatActivity {
         params.put("merchant_name", merchantName);
     }
 
-    public void onRegister(View view){
+    public void onRegister(View view) {
         getForm();
-
         model.post(params).observe(this, new Observer<NetworkStatus>() {
             @Override
             public void onChanged(@Nullable NetworkStatus networkStatus) {
-                if(networkStatus != null){
+                if (networkStatus != null) {
                     String res;
-                    if(networkStatus.isStatus()){
+                    if (networkStatus.isStatus()) {
                         res = networkStatus.getResponse();
                         Token token = new Gson().fromJson(res, Token.class);
                         TokenManager.getInstance(preferences).savePreferences(token);
+
+                        Intent i = new Intent(getApplicationContext(), UserActivity.class);
+                        startActivity(i);
+                        finish();
                     } else {
                         VolleyError volleyError = networkStatus.getVolleyError();
-                        if(volleyError.networkResponse.statusCode == 404){
+
+                        if (volleyError.networkResponse.statusCode == 404) {
                             byte[] data = volleyError.networkResponse.data;
                             res = new String(data);
                             ResponseError responseError = new Gson().fromJson(res, ResponseError.class);
                             Error error = responseError.getError();
+
                             checkFrom(bind.inputFirstName, error.getFirst_name());
                             checkFrom(bind.inputLastName, error.getLast_name());
                             checkFrom(bind.inputEmail, error.getEmail());
@@ -98,10 +105,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
-    private void checkFrom(EditText editText, String error){
-        if(editText.getText().toString().isEmpty()){
+    private void checkFrom(EditText editText, String error) {
+        if (!error.isEmpty()) {
             editText.setError(error);
         }
     }
@@ -110,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
         intentLogin();
     }
 
-    private void intentLogin(){
+    private void intentLogin() {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
         finish();

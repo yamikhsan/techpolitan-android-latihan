@@ -13,15 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activity.user.UserActivity" />
-        <activity android:name=".activity.login.LoginActivity" />
-        <activity android:name=".activity.register.RegisterActivity">
+        <activity android:name=".activity.user.UserActivity">
+
+        </activity>
+        <activity android:name=".activity.login.LoginActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".activity.register.RegisterActivity" />
         <activity android:name=".activity.disconnect.DisconnectActivity" />
         <activity android:name=".activity.detail.DetailActivity" />
         <activity android:name=".activity.main.MainActivity" />

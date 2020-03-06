@@ -31,16 +31,16 @@ public class FormViewModel extends AndroidViewModel {
 
     LiveData<NetworkStatus> get(){
         String url = baseUrl + BuildConfig.CATEGORIES;
-        return client.call(Request.Method.GET, url, null, header, null);
+        return client.jsonRequest(Request.Method.GET, url, null, header);
     }
 
     LiveData<NetworkStatus> get(long id){
         String url = baseUrl + BuildConfig.ID + id;
-        return client.call(Request.Method.GET, url, null, header, null);
+        return client.jsonRequest(Request.Method.GET, url, null, header);
     }
 
     LiveData<NetworkStatus> post(int method, JSONObject json, String url){
-        return client.call(method, url, json, header, null);
+        return client.jsonRequest(method, url, json, header);
     }
 
 }
