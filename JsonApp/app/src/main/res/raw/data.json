@@ -1,0 +1,19 @@
+{
+  "person": {
+    "name": "Steve Wolowitz",
+    "age": 18,
+    "gender": "male",
+    "address": [
+      {
+        "name": "home",
+        "detail": "Jl. Foresta Raya No. 13",
+        "city": "BSD City"
+      },
+      {
+        "name": "office",
+        "detail": "Jl. Grand Boulevard BSD",
+        "city": "BSD City"
+      }
+    ]
+  }
+}
