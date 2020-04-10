@@ -1,8 +1,11 @@
 package com.yami.studio.banana.merchantapp.utils;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.yami.studio.banana.merchantapp.entity.Token;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class TokenManager {
     private static TokenManager instance;
@@ -26,6 +29,14 @@ public class TokenManager {
         return instance;
     }
 
+    public static synchronized TokenManager getInstance(Context context){
+        if(instance == null){
+            SharedPreferences preferences = context.getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+            instance = new TokenManager(preferences);
+        }
+        return instance;
+    }
+
     public void savePreferences(Token token){
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(TOKEN_TYPE, token.getToken_type());
@@ -35,21 +46,25 @@ public class TokenManager {
         editor.apply();
     }
 
-    public void deletePreferences(){
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.remove(TOKEN_TYPE);
-        editor.remove(EXPIRES_IN);
-        editor.remove(ACCESS_TOKEN);
-        editor.remove(REFRESH_TOKEN);
-        editor.apply();
-    }
+//    public void deletePreferences(){
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.remove(TOKEN_TYPE);
+//        editor.remove(EXPIRES_IN);
+//        editor.remove(ACCESS_TOKEN);
+//        editor.remove(REFRESH_TOKEN);
+//        editor.apply();
+//    }
 
-    public Token getToken(){
-        return new Token(
-                preferences.getString(TOKEN_TYPE, ""),
-                preferences.getLong(EXPIRES_IN, 0),
-                preferences.getString(ACCESS_TOKEN, ""),
-                preferences.getString(REFRESH_TOKEN, "")
-        );
+//    public Token getToken(){
+//        return new Token(
+//                preferences.getString(TOKEN_TYPE, ""),
+//                preferences.getLong(EXPIRES_IN, 0),
+//                preferences.getString(ACCESS_TOKEN, ""),
+//                preferences.getString(REFRESH_TOKEN, "")
+//        );
+//    }
+
+    public String getAccessToken(){
+        return preferences.getString(TOKEN_TYPE, "") + " " + preferences.getString(ACCESS_TOKEN, "");
     }
 }

@@ -15,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.yami.studio.banana.merchantapp.activity.disconnect.DisconnectHandle;
 import com.yami.studio.banana.merchantapp.activity.login.LoginActivity;
-import com.yami.studio.banana.merchantapp.activity.user.UserActivity;
+import com.yami.studio.banana.merchantapp.activity.main.MainActivity;
 import com.yami.studio.banana.merchantapp.databinding.ActivityRegisterBinding;
 import com.yami.studio.banana.merchantapp.entity.Token;
 import com.yami.studio.banana.merchantapp.entity.error.Error;
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Token token = new Gson().fromJson(res, Token.class);
                         TokenManager.getInstance(preferences).savePreferences(token);
 
-                        Intent i = new Intent(getApplicationContext(), UserActivity.class);
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                         finish();
                     } else {

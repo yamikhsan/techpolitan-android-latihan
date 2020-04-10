@@ -2,9 +2,12 @@ package com.yami.studio.banana.merchantapp.activity.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,8 +20,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.yami.studio.banana.merchantapp.R;
-import com.yami.studio.banana.merchantapp.activity.disconnect.DisconnectHandle;
 import com.yami.studio.banana.merchantapp.activity.form.FormActivity;
+import com.yami.studio.banana.merchantapp.activity.login.LoginActivity;
 import com.yami.studio.banana.merchantapp.adapter.MainAdapter;
 import com.yami.studio.banana.merchantapp.entity.product.ListProduct;
 import com.yami.studio.banana.merchantapp.network.NetworkStatus;
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
     @Override
@@ -80,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void getData() {
-
-        model.getProductData().observe(this, new Observer<NetworkStatus>() {
+        model.get().observe(this, new Observer<NetworkStatus>() {
             @Override
             public void onChanged(@Nullable NetworkStatus networkStatus) {
                 if (networkStatus != null) {
@@ -93,15 +94,34 @@ public class MainActivity extends AppCompatActivity {
                         ListProduct data = gson.fromJson(res, ListProduct.class);
                         adapter.setProducts(data.getData());
                     } else {
-                        res = networkStatus.getVolleyError().getMessage();
-                        DisconnectHandle.onHandle(getApplicationContext(), res);
+//                        res = networkStatus.getVolleyError().getMessage();
+//                        DisconnectHandle.onHandle(getApplicationContext(), res);
+                        toLogin();
                     }
-
                     refreshLayout.setRefreshing(false);
                 }
             }
         });
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logout){
+            toLogin();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void toLogin(){
+        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
 }

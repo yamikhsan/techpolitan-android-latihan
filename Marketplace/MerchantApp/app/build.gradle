@@ -13,8 +13,8 @@ android {
 
         buildConfigField "String", "URL", '"http://210.210.154.65:4444/"'
         buildConfigField "String", "ID", '"api/product-by-id/"'
-        buildConfigField "String", "PRODUCTS", '"api/products"'
-        buildConfigField "String", "PRODUCT", '"api/product/"'
+        buildConfigField "String", "PRODUCTS", '"api/merchant/products"'
+        buildConfigField "String", "PRODUCT", '"api/merchant/product/"'
         buildConfigField "String", "CATEGORIES", '"api/categories"'
         buildConfigField "String", "STORAGE", '"storage/"'
         buildConfigField "String", "DELETE", '"/delete"'
@@ -22,6 +22,7 @@ android {
         buildConfigField "String", "SIGNUP", '"api/auth/signup"'
         buildConfigField "String", "SIGNIN", '"api/auth/login"'
         buildConfigField "String", "GETUSER", '"api/auth/getuser"'
+        buildConfigField "String", "MERCHANT", '"api/merchant/products"'
     }
     buildTypes {
         release {

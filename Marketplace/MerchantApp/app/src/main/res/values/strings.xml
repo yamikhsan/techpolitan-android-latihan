@@ -27,4 +27,6 @@
     <string name="confirm_pasword">Confirm Pasword</string>
     <string name="merchant_name">Merchant Name</string>
     <string name="sign_in">Sign In</string>
+    <string name="remember_me">Remember me</string>
+    <string name="logout">Logout</string>
 </resources>

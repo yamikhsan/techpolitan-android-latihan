@@ -29,13 +29,14 @@ import com.google.gson.Gson;
 import com.yami.studio.banana.merchantapp.BuildConfig;
 import com.yami.studio.banana.merchantapp.R;
 import com.yami.studio.banana.merchantapp.activity.disconnect.DisconnectHandle;
-import com.yami.studio.banana.merchantapp.utils.dialog.ActionDialog;
-import com.yami.studio.banana.merchantapp.utils.dialog.BuildDialog;
 import com.yami.studio.banana.merchantapp.entity.category.Category;
 import com.yami.studio.banana.merchantapp.entity.category.ListCategory;
 import com.yami.studio.banana.merchantapp.entity.product.Product;
 import com.yami.studio.banana.merchantapp.entity.product.ProductDetail;
 import com.yami.studio.banana.merchantapp.network.NetworkStatus;
+import com.yami.studio.banana.merchantapp.utils.FormatCurrency;
+import com.yami.studio.banana.merchantapp.utils.dialog.ActionDialog;
+import com.yami.studio.banana.merchantapp.utils.dialog.BuildDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +46,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -184,6 +184,8 @@ public class FormActivity extends AppCompatActivity {
         etQty = findViewById(R.id.input_item_qty);
         etDesc = findViewById(R.id.input_item_desc);
 
+        etPrice.addTextChangedListener(FormatCurrency.onCreate(etPrice).onTextChangedListener());
+
         tvTitle = findViewById(R.id.tv_title_form);
         btnAction = findViewById(R.id.btn_form);
 
@@ -202,7 +204,7 @@ public class FormActivity extends AppCompatActivity {
 
     private void validationForm(){
         name = etName.getText().toString();
-        price = etPrice.getText().toString();
+        price = FormatCurrency.onCreate(etPrice).orgString();
         qty = etQty.getText().toString();
         desc = etDesc.getText().toString();
 
@@ -233,7 +235,6 @@ public class FormActivity extends AppCompatActivity {
         product.setProductPrice(Long.parseLong(price));
         product.setProductQty(Long.parseLong(qty));
         product.setProductDesc(desc);
-        product.setMerchantId(getMerchantId());
         product.setCategoryId(category.getCategoryId());
         product.setProductImage(productImage);
 
@@ -258,11 +259,6 @@ public class FormActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    private long getMerchantId(){
-        Random random = new Random();
-        return random.nextInt(3) + 1;
     }
 
     private void showError(EditText et){

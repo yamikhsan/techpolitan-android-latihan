@@ -10,6 +10,7 @@ import com.android.volley.Request;
 import com.yami.studio.banana.merchantapp.BuildConfig;
 import com.yami.studio.banana.merchantapp.network.ApiClient;
 import com.yami.studio.banana.merchantapp.network.NetworkStatus;
+import com.yami.studio.banana.merchantapp.utils.TokenManager;
 
 import java.util.HashMap;
 
@@ -24,7 +25,9 @@ public class DetailViewModel extends AndroidViewModel {
         client = new ApiClient(application);
         baseUrl = BuildConfig.URL;
 
+        String auth = TokenManager.getInstance(application).getAccessToken();
         header.put("Content-type", "application/json");
+        header.put("Authorization", auth);
     }
 
     LiveData<NetworkStatus> getProduct(long id){

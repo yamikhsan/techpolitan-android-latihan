@@ -23,11 +23,11 @@ import com.yami.studio.banana.merchantapp.BuildConfig;
 import com.yami.studio.banana.merchantapp.R;
 import com.yami.studio.banana.merchantapp.activity.disconnect.DisconnectHandle;
 import com.yami.studio.banana.merchantapp.activity.form.FormActivity;
-import com.yami.studio.banana.merchantapp.utils.dialog.ActionDialog;
-import com.yami.studio.banana.merchantapp.utils.dialog.BuildDialog;
 import com.yami.studio.banana.merchantapp.entity.product.Product;
 import com.yami.studio.banana.merchantapp.entity.product.ProductDetail;
 import com.yami.studio.banana.merchantapp.network.NetworkStatus;
+import com.yami.studio.banana.merchantapp.utils.dialog.ActionDialog;
+import com.yami.studio.banana.merchantapp.utils.dialog.BuildDialog;
 
 import java.text.DecimalFormat;
 
@@ -102,7 +102,6 @@ public class DetailActivity extends AppCompatActivity {
                         DisconnectHandle.onHandle(getApplicationContext(), res);
                     }
                 }
-
             }
         });
 

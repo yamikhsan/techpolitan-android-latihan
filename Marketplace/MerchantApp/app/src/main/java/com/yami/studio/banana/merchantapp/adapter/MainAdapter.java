@@ -53,7 +53,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
         notifyDataSetChanged();
     }
 
-    class MainHolder extends RecyclerView.ViewHolder {
+    static class MainHolder extends RecyclerView.ViewHolder {
 
         private Context context;
         private ImageView img;
