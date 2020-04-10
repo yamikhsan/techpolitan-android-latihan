@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText text = view.findViewById(R.id.input_list);
                 String strText = text.getText().toString();
                 if(strText.equals("")){
-                    text.setError("Required");
+                    toast();
                 } else {
                     listText.add(strText);
                     adapter.notifyDataSetChanged();
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 String getText = text.getText().toString();
                 if(getText.equals("")){
-                    text.setError("Required");
+                    toast();
                 } else {
                     listText.remove(s);
                     listText.add(getText);
@@ -202,6 +203,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putStringSet(TODO_LIST, setList);
         editor.apply();
+    }
+
+    private void toast(){
+        String msg = "can not be empty";
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 }
